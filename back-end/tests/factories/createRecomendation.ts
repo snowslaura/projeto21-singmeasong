@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { prisma } from "../../src/database.js";
+import { Recommendation } from "@prisma/client";
 
 
 export function recommendation(){
@@ -50,6 +51,29 @@ export async function createAtLeastTenRecomendations() {
   }
 
   return recomendationsArray;
+}
+
+
+export async function createRecomendationsWithRandomScores(amount:number) {
+  let recomendationsArray =[]
+  for(let i=1;i<=amount+10;i++){
+    const recommendation = await prisma.recommendation.create({
+      data: {
+        name: faker.random.words(i),
+        youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
+        score: parseInt(faker.finance.amount(0,200,0))
+      }
+    });
+    recomendationsArray.push(recommendation)
+  }
+  const sortedRecommendations = sortByGreaterScores(recomendationsArray)
+
+  return sortedRecommendations;
+}
+
+
+function sortByGreaterScores(recommendations:Recommendation[]){
+ return recommendations.sort((a,b) => (a.score < b.score) ? 1 : -1)
 }
 
 

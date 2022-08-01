@@ -13,9 +13,8 @@ describe("should create recommendations and show the top scores recommendation a
         cy.visit(URL); 
         cy.get("#upvote-1").click();
         cy.visit(URLtop);  
-        cy.get('div>article').eq(0).should("have.id",1)    
-        // cy.get("#1").eq(0)   
-        
+        cy.get('div>article').eq(0).should("have.id",1)  
+                
     })
 })
 

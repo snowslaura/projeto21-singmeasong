@@ -4,11 +4,11 @@ const URL = "http://localhost:3000/"
 
 beforeEach(()=>{
     cy.resetDatabase()
-    cy.createRecommendations()
+    cy.createRecommendations() // creates 10 recommendations
 })
 
 
-describe("should upvote a recommendation", ()=>{
+describe("should post a recommendation and be shown in the first position", ()=>{
 
     it("should post a recommendation and be shown in the first position", () =>{
         const recommendation = {
@@ -20,7 +20,7 @@ describe("should upvote a recommendation", ()=>{
         cy.get("#link").type(recommendation.youtubeLink)
         cy.get("#button").click();
         cy.url().should("equal", URL)
-        cy.get("#11").should("have.id",11)        
+        cy.get("#11").should('be.visible')         
     })
    
 })

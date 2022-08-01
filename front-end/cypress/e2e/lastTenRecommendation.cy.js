@@ -1,6 +1,6 @@
+import { faker } from "@faker-js/faker"
 
 const URL = "http://localhost:3000/"
-const URLpost = "http://localhost:3000/top"
 
 beforeEach(()=>{
     cy.resetDatabase()
@@ -8,22 +8,19 @@ beforeEach(()=>{
 })
 
 
-describe("should create recommendations and show de top scores recommendation at /top", ()=>{  
+describe("should upvote a recommendation", ()=>{
 
-    it("should upvote a recommendation", () =>{
-        console.log("ENTREI AQUI")
-        cy.visit(URL);       
-        cy.get("#1").get("#upvote").click();
-
+    it("should post a recommendation and be shown in the first position", () =>{
+        const recommendation = {
+            name: faker.name.firstName(),
+            youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`
+        }
+        cy.visit(URL);
+        cy.get("#name").type(recommendation.name);
+        cy.get("#link").type(recommendation.youtubeLink)
+        cy.get("#button").click();
         cy.url().should("equal", URL)
-        cy.get("#upvote").should("have.text",1)
-        
+        cy.get("#11").should("have.id",11)        
     })
-
-
-
-
-
    
 })
-

@@ -20,7 +20,7 @@ describe("should post a recommendation and be shown in the first position", ()=>
         cy.get("#link").type(recommendation.youtubeLink)
         cy.get("#button").click();
         cy.url().should("equal", URL)
-        cy.get("#11").should('be.visible')         
+        cy.get("#11").should('be.visible')
     })
    
 })

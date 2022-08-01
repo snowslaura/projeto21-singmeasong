@@ -1,8 +1,8 @@
 import supertest from "supertest";
-import app from "../src/app.js"
-import { recommendation, wrongLinkSchemaRecommendation, wrongNameSchemaRecommendation} from "./factories/createRecomendation.js";
+import app from "../../src/app.js"
+import { recommendation, wrongLinkSchemaRecommendation, wrongNameSchemaRecommendation} from "../../tests/integration/factories/createRecomendation.js";
 import { deleteAllData } from "./factories/deleteAllData.js";
-import { prisma } from "../src/database.js"
+import { prisma } from "../../src/database.js"
 
 const agent = supertest(app)
 

@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { prisma } from "../../src/database.js";
+import { prisma } from "../../../src/database.js";
 import { Recommendation } from "@prisma/client";
 
 
@@ -32,6 +32,19 @@ export async function createRecomendation() {
     data: {
       name: faker.name.firstName(),
       youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`
+    }
+  });
+
+  return recomendation;
+}
+
+export async function recommendationBody(){
+  const recomendation = await prisma.recommendation.create({
+    data: {
+      id:parseInt(faker.finance.amount(0,5,0)),
+      name: faker.name.firstName(),
+      youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
+      score:0
     }
   });
 

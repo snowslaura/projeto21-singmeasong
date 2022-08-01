@@ -1,8 +1,8 @@
 import supertest from "supertest";
-import app from "../src/app.js"
+import app from "../../src/app.js"
 import { deleteAllData } from "./factories/deleteAllData.js";
 import { createAtLeastTenRecomendations, createRecomendation, createRecomendationsWithRandomScores } from "./factories/createRecomendation.js";
-import { prisma } from "../src/database.js"
+import { prisma } from "../../src/database.js"
 import { faker } from "@faker-js/faker";
 
 const agent = supertest(app)

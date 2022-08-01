@@ -34,7 +34,7 @@ export default function Home() {
       <CreateNewRecommendation disabled={loadingCreatingRecommendation} onCreateNewRecommendation={handleCreateRecommendation} />
       {
         recommendations.map(recommendation => (
-          <Recommendation
+          <Recommendation id={recommendation.index}
             key={recommendation.id}
             {...recommendation}
             onUpvote={() => listRecommendations()}

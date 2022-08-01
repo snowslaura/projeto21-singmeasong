@@ -9,7 +9,12 @@ async function resetScore(){
   await e2eRepository.resetScore()
 }
 
+async function createTenRecommendations(){
+  await e2eRepository.createTenRecommendations()
+}
+
 export const e2eService = {
     deleteAll,
-    resetScore
+    resetScore,
+    createTenRecommendations
 }
